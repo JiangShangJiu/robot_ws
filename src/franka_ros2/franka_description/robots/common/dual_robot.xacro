@@ -34,7 +34,9 @@
                       fake_sensor_commands1:=false
                       fake_sensor_commands2:=false
                       gazebo_effort1:=true
-                      gazebo_effort2:=true">
+                      gazebo_effort2:=true
+                      camera1:=true
+                      camera2:=true">
 
     <xacro:include filename="$(find franka_description)/robots/common/utils.xacro" />
     <xacro:include filename="$(find franka_description)/robots/common/dual_arm.xacro" />
@@ -74,7 +76,7 @@
 
     <xacro:include filename="$(find franka_description)/end_effectors/common/dual_hand.xacro"/>
     <xacro:include filename="$(find franka_description)/end_effectors/common/dual_utils.xacro" />
-    <!-- <xacro:include filename="$(find franka_description)/end_effectors/franka_hand/dual_hand_arguments.xacro" /> -->
+   <xacro:if value="${hand1}">
     <xacro:franka_hand
       connected_to="$(arg arm_id1)_link8"
       arm_id="${arm_id1}"
@@ -87,7 +89,15 @@
       description_pkg="franka_description"
       with_sc="${with_sc1}"
     />
+    <xacro:if value="${camera1}">
+      <xacro:include filename="$(find realsense_ros_gazebo)/xacro/fr3_camera.xacro"/>
+      <xacro:realsense_d435 sensor_name="fr3_camera" parent_link="${arm_id1}_hand" rate="10">
+        <origin rpy="3.14 0 0" xyz="0.03 0.0 0.046369403"/>
+      </xacro:realsense_d435>
+    </xacro:if>
+   </xacro:if>
 
+   <xacro:if value="${hand2}">
     <xacro:franka_hand
       connected_to="$(arg arm_id2)_link8"
       arm_id="${arm_id2}"
@@ -100,7 +110,13 @@
       description_pkg="franka_description"
       with_sc="${with_sc2}"
     />
-
+    <xacro:if value="${camera2}">
+      <xacro:include filename="$(find realsense_ros_gazebo)/xacro/fp3_camera.xacro"/>
+      <xacro:realsense_d435 sensor_name="${arm_id2}_camera" parent_link="${arm_id2}_hand" rate="10">
+        <origin rpy="3.14 0 0" xyz="0.03 0.0 0.046369403"/>
+      </xacro:realsense_d435>
+    </xacro:if>
+   </xacro:if>
 
     <xacro:if value="${gazebo1}">
       <xacro:gazebo-joint joint="${arm_id1}_joint1" transmission="hardware_interface/PositionJointInterface" />
@@ -139,7 +155,6 @@
       <xacro:gazebo-friction link="${arm_id1}_rightfinger" mu="1.13" />
    </xacro:if>
 
-
     <xacro:if value="${gazebo2}">
       <xacro:gazebo-joint joint="${arm_id2}_joint1" transmission="hardware_interface/PositionJointInterface" />
       <xacro:gazebo-joint joint="${arm_id2}_joint2" transmission="hardware_interface/PositionJointInterface" />
@@ -176,6 +191,7 @@
       <xacro:gazebo-friction link="${arm_id2}_leftfinger" mu="1.13" />
       <xacro:gazebo-friction link="${arm_id2}_rightfinger" mu="1.13" />
    </xacro:if>
+
    <xacro:if value="${ros2_control2}">
       <xacro:include filename="$(find franka_description)/robots/common/dual_arm.ros2_control.xacro"/>
       <xacro:franka_arm_ros2_control

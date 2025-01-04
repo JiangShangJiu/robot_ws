@@ -127,7 +127,7 @@ def generate_launch_description():
     # RViz
     rviz_base = os.path.join(get_package_share_directory(
         'dual_arm'), 'rviz')
-    rviz_full_config = os.path.join(rviz_base, 'dual_config.rviz')
+    rviz_full_config = os.path.join(rviz_base, 'dual_config4.rviz')
 
     rviz_node = Node(
         package='rviz2',

@@ -1,0 +1,69 @@
+# gz topic published by the simulator core
+- ros_topic_name: "clock"
+  gz_topic_name: "clock"
+  ros_type_name: "rosgraph_msgs/msg/Clock"
+  gz_type_name: "gz.msgs.Clock"
+  direction: GZ_TO_ROS
+
+# gz topic published by JointState plugin
+- ros_topic_name: "joint_states"
+  gz_topic_name: "joint_states"
+  ros_type_name: "sensor_msgs/msg/JointState"
+  gz_type_name: "gz.msgs.Model"
+  direction: GZ_TO_ROS
+
+# Bridge for fr3 camera image
+- ros_topic_name: "/fr3_camera/image"
+  gz_topic_name: "/fr3_camera/image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "ignition.msgs.Image"
+  direction: GZ_TO_ROS
+
+# Bridge for RGBD camera depth image
+- ros_topic_name: "/fr3_camera/depth_image"
+  gz_topic_name: "/fr3_camera/depth_image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "ignition.msgs.Image"
+  direction: GZ_TO_ROS
+
+# Bridge for RGBD camera point cloud
+- ros_topic_name: "/fr3_camera/points"
+  gz_topic_name: "/fr3_camera/points"
+  ros_type_name: "sensor_msgs/msg/PointCloud2"
+  gz_type_name: "ignition.msgs.PointCloudPacked"
+  direction: GZ_TO_ROS
+
+# Bridge for RGBD camera camera info
+- ros_topic_name: "/fr3_camera/camera_info"
+  gz_topic_name: "/fr3_camera/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "ignition.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+
+# Bridge for top camera image
+- ros_topic_name: "/fp3_camera/image"
+  gz_topic_name: "/fp3_camera/image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "ignition.msgs.Image"
+  direction: GZ_TO_ROS
+
+# Bridge for top camera depth image
+- ros_topic_name: "/fp3_camera/depth_image"
+  gz_topic_name: "/fp3_camera/depth_image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "ignition.msgs.Image"
+  direction: GZ_TO_ROS
+
+# Bridge for top camera point cloud
+- ros_topic_name: "/fp3_camera/points"
+  gz_topic_name: "/fp3_camera/points"
+  ros_type_name: "sensor_msgs/msg/PointCloud2"
+  gz_type_name: "ignition.msgs.PointCloudPacked"
+  direction: GZ_TO_ROS
+
+# Bridge for top camera camera info
+- ros_topic_name: "/fp3_camera/camera_info"
+  gz_topic_name: "/fp3_camera/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "ignition.msgs.CameraInfo"
+  direction: GZ_TO_ROS

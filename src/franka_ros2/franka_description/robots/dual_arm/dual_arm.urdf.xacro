@@ -50,8 +50,12 @@
 
   <xacro:arg name="xyz2" default="0 0.5 0" />
   <xacro:arg name="rpy2" default="0 0 0" />
+
   <xacro:arg name="parent1" default="world" />
   <xacro:arg name="parent2" default="fr3_link0" />
+
+  <xacro:arg name="camera1" default="true" />
+  <xacro:arg name="camera2" default="true" />
 
   <xacro:franka_robot arm_id1="$(arg arm_id1)"
                       arm_id2="$(arg arm_id2)"
@@ -86,7 +90,9 @@
                       rpy1="$(arg rpy1)"
                       rpy2="$(arg rpy2)"
                       parent1="$(arg parent1)"
-                      parent2="$(arg parent2)">
+                      parent2="$(arg parent2)"
+                      camera1="$(arg camera1)"
+                      camera2="$(arg camera2)">
   </xacro:franka_robot>
 
 

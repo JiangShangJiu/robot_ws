@@ -245,4 +245,6 @@
     <disable_collisions link1="fr3_link6" link2="fr3_link7" reason="Adjacent"/>
     <disable_collisions link1="fr3_link6" link2="fr3_rightfinger" reason="Never"/>
     <disable_collisions link1="fr3_link7" link2="fr3_rightfinger" reason="Never"/>
+    <disable_collisions link1="fr3_camera_link" link2="fr3_hand" reason="Never"/>
+    <disable_collisions link1="fp3_camera_link" link2="fp3_hand" reason="Never"/>
 </robot>

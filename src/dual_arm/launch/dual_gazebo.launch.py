@@ -52,7 +52,7 @@ def prepare_launch_description():
         'config',
         'dual_bridge.yaml'
     )
-    start_gazebo_ros_bridge_cmd = Node(
+    gazebo_ros_bridge_cmd = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
         arguments=[
@@ -63,6 +63,7 @@ def prepare_launch_description():
         output='screen',
         parameters=[{'use_sim_time': True}],
     )
+    
     # Get robot description
     robot_state_publisher = OpaqueFunction(
         function=get_robot_description)
@@ -71,7 +72,7 @@ def prepare_launch_description():
     gazebo_empty_world = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(pkg_ros_gz_sim, 'launch', 'gz_sim.launch.py')),
-        launch_arguments={'gz_args': 'empty.sdf -r', }.items(),
+        launch_arguments={'gz_args': '/home/xiaomeng/code/robot_ws/src/dual_arm/worlds/worlds.sdf -r', }.items(),
     )
     # Spawn
     spawn = Node(
@@ -119,7 +120,10 @@ def prepare_launch_description():
         RegisterEventHandler(
             event_handler=OnProcessExit(
                 target_action=load_joint_state_broadcaster,
-                on_exit=[fr3_arm_controller,fp3_arm_controller,fr3_gripper_controller,fp3_gripper_controller],
+                on_exit=[fr3_arm_controller,
+                         fp3_arm_controller,
+                         fr3_gripper_controller,
+                         fp3_gripper_controller],
             )
         ),
         Node(
@@ -133,7 +137,14 @@ def prepare_launch_description():
                  }
                  ],
         ),
-        start_gazebo_ros_bridge_cmd,
+        gazebo_ros_bridge_cmd,
+
+        # Node(
+        #     package='dual_arm',  # 替换为您的包名
+        #     executable='pointcloud_frame_modifier',  # 脚本文件名
+        #     name='pointcloud_frame_modifier_node',  # 节点名
+        #     output='screen',  # 输出到终端 
+        # )
     ])
 
 def generate_launch_description():

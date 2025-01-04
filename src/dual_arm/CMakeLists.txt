@@ -12,12 +12,25 @@ find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(rclpy REQUIRED)
 
+# 安装 Python 脚本（整个 scripts 目录）
+install(DIRECTORY
+  scripts/  # 这会安装 scripts 目录下的所有文件
+  DESTINATION lib/${PROJECT_NAME}  # 安装路径
+  FILES_MATCHING PATTERN "*.py"  # 仅匹配 .py 文件
+)
+
+
+
+# 安装其他文件（launch 文件、配置文件等）
 install(
   DIRECTORY
-    launch config rviz scripts
+    launch
+    config
+    rviz
   DESTINATION share/${PROJECT_NAME}
 )
 
+# 如果需要构建测试，进行 lint 等检查
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights

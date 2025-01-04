@@ -1,0 +1,35 @@
+model {
+  file: "model.sdf"
+}
+name: "JUICER_SET"
+description: "JUICER SET\nHave fresh fruit juice with friends with this Juicer Set! Includes juicer, cup, orange, lemon, and knife."
+version: 1
+authors {
+  name: "Google"
+  email: "scanned-objects@google.com"
+}
+legal {
+  copyright: "Copyright 2020 Google LLC."
+  license: "Creative Commons Attribution 4.0 International"
+}
+annotations {
+  key: "brand"
+  value: "PlanToys"
+}
+annotations {
+  key: "mpn"
+  value: "3610"
+}
+annotations {
+  key: "sku"
+  value: "03610P00"
+}
+compatibilities {
+  name: "Gazebo"
+  version {
+    major: 11
+  }
+}
+categories {
+  first: "Toys"
+}

@@ -1,0 +1,285 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 1000  # Hz
+    
+    joint_position_example_controller:
+      type: franka_example_controllers/JointPositionExampleController
+
+    joint_velocity_example_controller:
+      type: franka_example_controllers/JointVelocityExampleController
+
+    joint_impedance_example_controller:
+      type: franka_example_controllers/JointImpedanceExampleController
+
+    fr3_joint_impedance_example_controller:
+      type: franka_example_controllers/JointImpedanceExampleController
+      
+    fp3_joint_impedance_example_controller:
+      type: franka_example_controllers/JointImpedanceExampleController
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+    
+    fr3_joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    fp3_joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    fr3_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+    
+    fp3_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    franka_robot_state_broadcaster:
+      type: franka_robot_state_broadcaster/FrankaRobotStateBroadcaster
+
+    hand_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+    
+    fr3_hand_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    fp3_hand_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+    
+    fr3_gripper_controller:
+      type: position_controllers::GripperActionController
+
+    joint_impedance_controller:
+      type: compliant_controllers/JointImpedanceController 
+
+    ModelExampleController:
+      type: franka_example_controllers/ModelExampleController
+joint_impedance_controller:
+  ros__parameters:
+    k_gains:
+      - 24.0
+      - 24.0
+      - 24.0
+      - 24.0
+      - 10.0
+      - 6.0
+      - 2.0
+    d_gains:
+      - 2.0
+      - 2.0
+      - 2.0
+      - 1.0
+      - 1.0
+      - 1.0
+      - 0.5  
+
+joint_position_example_controller:
+  ros__parameters:
+    gazebo: true
+
+joint_velocity_example_controller:
+  ros__parameters:
+    gazebo: true
+  
+joint_impedance_example_controller:
+  ros__parameters:
+    k_gains:
+      - 24.0
+      - 24.0
+      - 24.0
+      - 24.0
+      - 10.0
+      - 6.0
+      - 2.0
+    d_gains:
+      - 2.0
+      - 2.0
+      - 2.0
+      - 1.0
+      - 1.0
+      - 1.0
+      - 0.5
+
+fr3_joint_impedance_example_controller:
+  ros__parameters:
+    k_gains:
+      - 24.0
+      - 24.0
+      - 24.0
+      - 24.0
+      - 10.0
+      - 6.0
+      - 2.0
+    d_gains:
+      - 2.0
+      - 2.0
+      - 2.0
+      - 1.0
+      - 1.0
+      - 1.0
+      - 0.5
+
+fp3_joint_impedance_example_controller:
+  ros__parameters:
+    k_gains:
+      - 24.0
+      - 24.0
+      - 24.0
+      - 24.0
+      - 10.0
+      - 6.0
+      - 2.0
+    d_gains:
+      - 2.0
+      - 2.0
+      - 2.0
+      - 1.0
+      - 1.0
+      - 1.0
+      - 0.5
+
+franka_robot_state_broadcaster:
+  ros__parameters:
+    gazebo: true
+    arm_id: fr3
+    
+
+fr3_arm_controller:
+  ros__parameters:
+    gazebo: true
+    command_interfaces:
+      - effort
+    state_interfaces:
+      - position
+      - velocity
+    joints:
+      - fr3_joint1
+      - fr3_joint2
+      - fr3_joint3
+      - fr3_joint4
+      - fr3_joint5
+      - fr3_joint6
+      - fr3_joint7
+    gains:
+      fr3_joint1: { p: 600., d: 30., i: 0., i_clamp: 1. }
+      fr3_joint2: { p: 600., d: 30., i: 0., i_clamp: 1. }
+      fr3_joint3: { p: 600., d: 30., i: 0., i_clamp: 1. }
+      fr3_joint4: { p: 600., d: 30., i: 0., i_clamp: 1. }
+      fr3_joint5: { p: 250., d: 10., i: 0., i_clamp: 1. }
+      fr3_joint6: { p: 150., d: 10., i: 0., i_clamp: 1. }
+      fr3_joint7: { p: 50., d: 5., i: 0., i_clamp: 1. }
+
+fp3_arm_controller:
+  ros__parameters:
+    gazebo: true
+    command_interfaces:
+      - effort
+    state_interfaces:
+      - position
+      - velocity
+    joints:
+      - fp3_joint1
+      - fp3_joint2
+      - fp3_joint3
+      - fp3_joint4
+      - fp3_joint5
+      - fp3_joint6
+      - fp3_joint7
+    gains:
+      fp3_joint1: { p: 600., d: 30., i: 0., i_clamp: 1. }
+      fp3_joint2: { p: 600., d: 30., i: 0., i_clamp: 1. }
+      fp3_joint3: { p: 600., d: 30., i: 0., i_clamp: 1. }
+      fp3_joint4: { p: 600., d: 30., i: 0., i_clamp: 1. }
+      fp3_joint5: { p: 250., d: 10., i: 0., i_clamp: 1. }
+      fp3_joint6: { p: 150., d: 10., i: 0., i_clamp: 1. }
+      fp3_joint7: { p: 50., d: 5., i: 0., i_clamp: 1. }
+
+
+
+fr3_gripper_controller:
+  ros__parameters:
+    gazebo: true
+    command_interfaces:
+      - effort
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    joints: 
+      - fr3_finger_joint1
+      - fr3_finger_joint2
+    gains:
+      fr3_finger_joint1: { p: 600., d: 30., i: 0., i_clamp: 1. }
+      fr3_finger_joint2: { p: 600., d: 30., i: 0., i_clamp: 1. }
+    allow_partial_trajectory: true
+
+hand_controller:
+  ros__parameters:
+    gazebo: true
+    command_interfaces:
+      - effort
+    state_interfaces:
+      - position
+      - velocity
+    joints: 
+      - fr3_finger_joint1
+      - fr3_finger_joint2
+      
+    gains:
+      fr3_finger_joint1: { p: 600., d: 30., i: 0., i_clamp: 1. }
+      fr3_finger_joint2: { p: 600., d: 30., i: 0., i_clamp: 1. }
+    allow_partial_trajectory: true
+
+
+fr3_hand_controller:
+  ros__parameters:
+    gazebo: true
+    command_interfaces:
+      - effort
+    state_interfaces:
+      - position
+      - velocity
+    joints: 
+      - fr3_finger_joint1
+      - fr3_finger_joint2
+      
+    gains:
+      fr3_finger_joint1: { p: 600., d: 30., i: 0., i_clamp: 1. }
+      fr3_finger_joint2: { p: 600., d: 30., i: 0., i_clamp: 1. }
+    allow_partial_trajectory: true
+
+
+fp3_hand_controller:
+  ros__parameters:
+    gazebo: true
+    command_interfaces:
+      - effort
+    state_interfaces:
+      - position
+      - velocity
+    joints: 
+      - fp3_finger_joint1
+      - fp3_finger_joint2
+      
+    gains:
+      fp3_finger_joint1: { p: 600., d: 30., i: 0., i_clamp: 1. }
+      fp3_finger_joint2: { p: 600., d: 30., i: 0., i_clamp: 1. }
+    allow_partial_trajectory: true
+
+
+
+ModelExampleController:
+  ros__parameters:
+    gazebo: true
+    command_interfaces:
+      - effort
+    state_interfaces:
+      - position
+      - velocity
+    joints:
+      - fr3_joint1
+      - fr3_joint2
+      - fr3_joint3
+      - fr3_joint4
+      - fr3_joint5
+      - fr3_joint6
+      - fr3_joint7
+    

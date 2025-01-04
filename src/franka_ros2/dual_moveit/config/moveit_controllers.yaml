@@ -1,0 +1,78 @@
+  controller_names:
+    - fr3_arm_controller
+    - fp3_arm_controller
+    - fr3_hand_controller
+    - fp3_hand_controller
+    - fr3_moveit
+    - fp3_moveit
+
+  fr3_arm_controller:
+    type: FollowJointTrajectory
+    action_ns: follow_joint_trajectory
+    default: true
+    joints:
+      - fr3_joint1
+      - fr3_joint2
+      - fr3_joint3
+      - fr3_joint4
+      - fr3_joint5
+      - fr3_joint6
+      - fr3_joint7
+    default: true
+  fp3_arm_controller:
+    type: FollowJointTrajectory
+    action_ns: follow_joint_trajectory
+    default: true
+    joints:
+      - fp3_joint1
+      - fp3_joint2
+      - fp3_joint3
+      - fp3_joint4
+      - fp3_joint5
+      - fp3_joint6
+      - fp3_joint7
+    default: true
+  fr3_hand_controller:
+    type: FollowJointTrajectory
+    joints:
+      - fr3_finger_joint1
+      - fr3_finger_joint2
+    action_ns: follow_joint_trajectory
+    default: true
+  fp3_hand_controller:
+    type: FollowJointTrajectory
+    joints:
+      - fp3_finger_joint1
+      - fp3_finger_joint2
+    action_ns: follow_joint_trajectory
+    default: true
+  fr3_moveit:
+    type: FollowJointTrajectory
+    action_ns: follow_joint_trajectory
+    default: true
+    joints:
+      - fr3_joint1
+      - fr3_joint2
+      - fr3_joint3
+      - fr3_joint4
+      - fr3_joint5
+      - fr3_joint6
+      - fr3_joint7
+      - fr3_finger_joint1
+      - fr3_finger_joint2
+    default: true
+  fp3_moveit:
+    type: FollowJointTrajectory
+    action_ns: follow_joint_trajectory
+    default: true
+    joints:
+      - fp3_joint1
+      - fp3_joint2
+      - fp3_joint3
+      - fp3_joint4
+      - fp3_joint5
+      - fp3_joint6
+      - fp3_joint7
+      - fp3_finger_joint1
+      - fp3_finger_joint2
+    default: true

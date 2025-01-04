@@ -1,0 +1,57 @@
+sensors:
+  - d435
+
+d435:
+  filtered_cloud_topic: /rgbd_camera/points
+  max_range: 3.0
+  max_update_rate: 1.0
+  padding_offset: 0.01
+  padding_scale: 0.01
+  point_cloud_topic: /rgbd_camera/points
+  point_subsample: 1
+  sensor_plugin: occupancy_map_monitor/PointCloudOctomapUpdater
+octomap_frame: fr3_link0
+
+# sensors:
+#   - d435
+
+# d435:
+#     sensor_plugin: occupancy_map_monitor/PointCloudOctomapUpdater
+#     point_cloud_topic: /rgbd_camera/points
+#     point_subsample: 2
+#     padding_offset: 0.1
+#     padding_scale: 1.0
+#     max_update_rate: 30.0
+#     queue_size: 5
+#     near_clipping_plane_distance: 0.3
+#     far_clipping_plane_distance: 5.0
+#     shadow_threshold: 0.2
+#     frame_id: d435_bottom_screw_frame
+
+
+
+# d435:
+#     sensor_plugin: occupancy_map_monitor/DepthImageOctomapUpdater
+#     image_topic: /rgbd_camera/depth_image
+#     queue_size: 5
+#     near_clipping_plane_distance: 0.3
+#     far_clipping_plane_distance: 5.0
+#     shadow_threshold: 0.2
+#     padding_scale: 1.0
+#     max_update_rate: 30.0
+    # filtered_cloud_topic: /camera_2/filtered_point
+    #frame_id: d435_depth_frame
+
+# top_camera:
+#     sensor_plugin: occupancy_map_monitor/DepthImageOctomapUpdater
+#     image_topic: /top_camera/depth_image
+#     queue_size: 5
+#     near_clipping_plane_distance: 0.3
+#     far_clipping_plane_distance: 5.0
+#     shadow_threshold: 0.2
+#     padding_scale: 1.0
+#     max_update_rate: 30.0
+    # filtered_cloud_topic: /camera_2/filtered_point
+    #frame_id: d435_depth_frame
+
+    

@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="dual_arm">
+
+  <xacro:include filename="$(find franka_description)/robots/common/dual_robot.xacro"/>
+
+  <!-- Name for this robot1 and robot2 -->
+  <xacro:arg name="arm_id1" default="fr3" />
+  <xacro:arg name="arm_id2" default="fp3" />
+
+  <!-- Should an end-effector be mounted at the flange?" -->
+  <xacro:arg name="hand1" default="true" />
+  <xacro:arg name="hand2" default="true" />
+
+  <!-- Which end-effector would be mounted at the flange?" -->
+  <xacro:arg name="ee_id1" default="franka_hand" />
+  <xacro:arg name="ee_id2" default="franka_hand" />
+
+
+  <!-- Should self-collision be enabled? -->
+  <xacro:arg name="with_sc1" default="false" />
+  <xacro:arg name="with_sc2" default="false" />
+
+  <!-- Is the robot being controlled with ros2_control?" -->
+  <xacro:arg name="ros2_control1" default="true" />
+  <xacro:arg name="ros2_control2" default="true" />
+
+  <!-- IP address or hostname of the robot" -->
+  <xacro:arg name="robot_ip1" default="dont-care" />
+  <xacro:arg name="robot_ip2" default="dont-care" />
+
+  <!-- Should a fake hardware be used? -->
+  <xacro:arg name="use_fake_hardware1" default="false" />
+  <xacro:arg name="use_fake_hardware2" default="false" />
+
+
+  <!-- Should fake sensors be used? -->
+  <xacro:arg name="fake_sensor_commands1" default="false" />
+  <xacro:arg name="fake_sensor_commands2" default="false" />
+
+  <!-- Should the robot be spawned in Gazebo?" -->
+  <xacro:arg name="gazebo1" default="true" />
+  <xacro:arg name="gazebo2" default="true" />
+
+  <!-- Should the robot be spawned in Gazebo with effort interfaces?" -->
+  <xacro:arg name="gazebo_effort1" default="true" />
+  <xacro:arg name="gazebo_effort2" default="true" />
+
+  <xacro:arg name="xyz1" default="0 -0.5 0" />
+  <xacro:arg name="rpy1" default="0 0 0" />
+
+  <xacro:arg name="xyz2" default="0 0.5 0" />
+  <xacro:arg name="rpy2" default="0 0 0" />
+  <xacro:arg name="parent1" default="world" />
+  <xacro:arg name="parent2" default="fr3_link0" />
+
+  <xacro:franka_robot arm_id1="$(arg arm_id1)"
+                      arm_id2="$(arg arm_id2)"
+                      joint_limits1="${xacro.load_yaml('$(find franka_description)/robots/$(arg arm_id1)/joint_limits.yaml')}"
+                      joint_limits2="${xacro.load_yaml('$(find franka_description)/robots/$(arg arm_id2)/joint_limits.yaml')}"
+                      inertials1="${xacro.load_yaml('$(find franka_description)/robots/$(arg arm_id1)/inertials.yaml')}"
+                      inertials2="${xacro.load_yaml('$(find franka_description)/robots/$(arg arm_id2)/inertials.yaml')}"
+                      kinematics1="${xacro.load_yaml('$(find franka_description)/robots/$(arg arm_id1)/kinematics.yaml')}"
+                      kinematics2="${xacro.load_yaml('$(find franka_description)/robots/$(arg arm_id2)/kinematics.yaml')}"
+                      dynamics1="${xacro.load_yaml('$(find franka_description)/robots/$(arg arm_id1)/dynamics.yaml')}"
+                      dynamics2="${xacro.load_yaml('$(find franka_description)/robots/$(arg arm_id2)/dynamics.yaml')}"
+                      gazebo1="$(arg gazebo1)"
+                      gazebo2="$(arg gazebo2)"
+                      hand1="$(arg hand1)"
+                      hand2="$(arg hand2)"
+                      ee_id1="$(arg ee_id1)"
+                      ee_id2="$(arg ee_id2)"
+                      with_sc1="$(arg with_sc1)"
+                      with_sc2="$(arg with_sc2)"
+                      ros2_control1="$(arg ros2_control1)"
+                      ros2_control2="$(arg ros2_control2)"
+                      robot_ip1="$(arg robot_ip1)"
+                      robot_ip2="$(arg robot_ip2)"
+                      use_fake_hardware1="$(arg use_fake_hardware1)"
+                      use_fake_hardware2="$(arg use_fake_hardware2)"
+                      fake_sensor_commands1="$(arg fake_sensor_commands1)"
+                      fake_sensor_commands2="$(arg fake_sensor_commands2)"
+                      gazebo_effort1="$(arg gazebo_effort1)"
+                      gazebo_effort2="$(arg gazebo_effort2)"
+                      xyz1="$(arg xyz1)"
+                      xyz2="$(arg xyz2)"
+                      rpy1="$(arg rpy1)"
+                      rpy2="$(arg rpy2)"
+                      parent1="$(arg parent1)"
+                      parent2="$(arg parent2)">
+  </xacro:franka_robot>
+
+
+</robot>
